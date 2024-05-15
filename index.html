@@ -18,7 +18,6 @@
         init: true,
         id: 6,
         requestToken: null,
-        editorType: "embedded",
       };
 
       const script = document.createElement("script");
@@ -28,7 +27,7 @@
         "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"
       );
       script.onload = async () => {
-        let docInit = await window.DocSpace.SDK.initManager(config);
+        let docInit = window.DocSpace.SDK.initManager(config);
 
         docInit = await docInit.login(
           "fariz2@gmail.com",
