@@ -22,12 +22,18 @@
     }
 
     var docSpace = DocSpace.SDK.initManager({config});
+    
+    const login = docSpace.login("fandilladp@gmail.com","6473d255c6bd664636c946d545fbc6ae18a756bb041c5eaf160f31bec7c74469");
 
-    (async () => {
-      const login = await docSpace.login("fandilladp@gmail.com","6473d255c6bd664636c946d545fbc6ae18a756bb041c5eaf160f31bec7c74469");
+    login.
+    then((res) => {
+      console.log(res);
+    }).
+    catch((err) => {
+      console.log(err);
+    });
 
-      docSpace.initEditor(config);
-    })()
+    docSpace.initEditor(config);
 
     // const script = document.createElement("script");
 
