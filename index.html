@@ -11,6 +11,9 @@
 
 
   <script>
+    let email = "fandilladp@gmail.com"
+    let password = "Pertamina@2024"
+
     const config = {
       "mode": "editor",
       "width": "100%",
@@ -20,21 +23,30 @@
       "id": 6,
       "requestToken": null,
     }
+    const systemConfig = {
+        events: {
+          "onAppReady": async () => {
+              const user = await DocSpace.SDK.frames[config.frameId].getUserInfo();
 
-    var docSpace = DocSpace.SDK.initManager({config});
-    
-    const login = docSpace.login("fandilladp@gmail.com","6473d255c6bd664636c946d545fbc6ae18a756bb041c5eaf160f31bec7c74469");
+              if (user?.email === email) {
+                DocSpace.SDK.initManager(config);
+              } else {
+                await DocSpace.SDK.frames[config.frameId].logout();
 
-    login.
-    then((res) => {
-      console.log(res);
-    }).
-    catch((err) => {
-      console.log(err);
-    });
+                const hashSettings = await DocSpace.SDK.frames[config.frameId].getHashSettings();
+                const passwordHash = await DocSpace.SDK.frames[config.frameId].createHash(password, hashSettings);
 
-    docSpace.initEditor(config);
+                try {
+                  DocSpace.SDK.frames[config.frameId].login(email, passwordHash).then(() => DocSpace.SDK.initManager(config));
+                } catch (e) {
+                  console.error(e);
+                }
+              }
+          }
+        }
+      };
 
+      DocSpace.SDK.initSystem({...config, ...systemConfig});
     // const script = document.createElement("script");
 
     // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
