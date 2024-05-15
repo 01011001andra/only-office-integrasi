@@ -25,6 +25,12 @@
 
     console.log(docSpace);
 
+    (async () => {
+      const login = await docSpace.login("fandilladp@gmail.com","6473d255c6bd664636c946d545fbc6ae18a756bb041c5eaf160f31bec7c74469");
+
+      console.log(login);
+    })()
+
     // const script = document.createElement("script");
 
     // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
