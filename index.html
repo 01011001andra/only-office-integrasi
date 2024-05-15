@@ -26,8 +26,9 @@
 
     script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
     script.onload = () => {
-      window.DocSpace.SDK.login("fariz2@gmail.com", "43e9c091-69e3-4049-b7c0-866616b52963")
-      window.DocSpace.SDK.initFrame(config)
+      const docInit = window.DocSpace.SDK.initManager(config)
+      docInit.login("fariz2@gmail.com", "43e9c091-69e3-4049-b7c0-866616b52963")
+      docInit.initFrame(config)
     };
 
     document.body.appendChild(script);
