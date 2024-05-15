@@ -27,9 +27,13 @@
     script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
     script.onload = () => {
       const docInit = window.DocSpace.SDK.initManager(config)
-      const result = docInit.login("fariz2@gmail.com", "43e9c091-69e3-4049-b7c0-866616b52963")
-      
-      console.log(result);
+    
+      docInit.login("fariz2@gmail.com", "43e9c091-69e3-4049-b7c0-866616b52963").then((res) => {
+        console.log(res)
+      }).
+      catch((err) => {
+        console.log(err)
+      })
 
       docInit.initFrame(config)
     };
