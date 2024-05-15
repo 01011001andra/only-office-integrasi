@@ -24,16 +24,7 @@
     const script = document.createElement("script");
 
     script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
-    script.onload = async () => {
-      const docInit = await window.DocSpace.SDK.initManager(config)
-    
-      const result = await docInit.login("fariz2@gmail.com", "43e9c091-69e3-4049-b7c0-866616b52963")
-      
-      console.log("Result", result);
-      console.log("DocInit", docInit);
-
-      await docInit.initFrame(config)
-    };
+    script.onload = () => window.DocSpace.SDK.initFrame(config);
 
     document.body.appendChild(script);
   </script>
