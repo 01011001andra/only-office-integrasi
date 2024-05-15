@@ -8,11 +8,15 @@
   <body style="width: 100%; height: 100vh">
     <div id="ds-frame" style="width: 100%; height: 100vh"></div>
     <script>
+      // init frame
       DocSpace.SDK.initFrame({
         frameId: "ds-frame",
         showMenu: true,
       });
 
+      DocSpace.SDK.frames["ds-frame"];
+
+      // init editor
       DocSpace.SDK.initEditor({
         callbackUrl:
           "https://office.mypge.id:443/filehandler.ashx?action=track&fileid=7&stream_auth=453443517989.WBCFXYDLSUU5HK9EPRPIPLCGUIVNTMW3VXREN1NMQK&request-x-real-ip=180.252.61.98&request-user-agent=insomnia%2f2023.5.8",
