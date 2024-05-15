@@ -21,12 +21,16 @@
       "requestToken": null,
     }
 
-    const script = document.createElement("script");
+    var docSpace = DocSpace.SDK.initManager({config});
 
-    script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
-    script.onload = () => window.DocSpace.SDK.initFrame(config);
+    console.log(docSpace);
 
-    document.body.appendChild(script);
+    // const script = document.createElement("script");
+
+    // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
+    // script.onload = () => window.DocSpace.SDK.initFrame(config);
+
+    // document.body.appendChild(script);
   </script>
 </body>
 </html>
