@@ -7,7 +7,7 @@
   </head>
   <body style="width: 100%; height: 100vh">
     <div id="ds-frame">Fallback text</div>
-    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=editor&width=100%25&height=100%25&frameId=ds-frame&init=true&id=6"></script>
+    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"></script>
 
     <script>
       let email = "fandilladp@gmail.com";
@@ -31,7 +31,7 @@
             ].getUserInfo();
 
             if (user?.email === email) {
-              DocSpace.SDK.initManager(config);
+              DocSpace.SDK.initFrame(config);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
 
@@ -55,12 +55,6 @@
       };
 
       DocSpace.SDK.initSystem({ ...config, ...systemConfig }); // INI BENAR
-      // const script = document.createElement("script");
-
-      // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
-      // script.onload = () => window.DocSpace.SDK.initFrame(config);
-
-      // document.body.appendChild(script);
     </script>
   </body>
 </html>
