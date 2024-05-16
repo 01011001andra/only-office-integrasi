@@ -7,7 +7,7 @@
   </head>
   <body style="width: 100%; height: 100vh">
     <div id="ds-frame">Fallback text</div>
-    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"></script>
+    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=editor&width=100%25&height=100%25&frameId=ds-frame&init=true&id=6"></script>
 
     <script>
       const config = {
@@ -23,32 +23,30 @@
       const systemConfig = {
         events: {
           onAppReady: async () => {
-            DocSpace.SDK.initManager(config);
+            const user = await DocSpace.SDK.frames[
+              config.frameId
+            ].getUserInfo();
 
-            // const user = await DocSpace.SDK.frames[
-            //   config.frameId
-            // ].getUserInfo();
+            if (user?.email === email) {
+              DocSpace.SDK.initManager(config);
+            } else {
+              await DocSpace.SDK.frames[config.frameId].logout();
 
-            // if (user?.email === email) {
-            //   DocSpace.SDK.initManager(config);
-            // } else {
-            //   await DocSpace.SDK.frames[config.frameId].logout();
+              const hashSettings = await DocSpace.SDK.frames[
+                config.frameId
+              ].getHashSettings();
+              const passwordHash = await DocSpace.SDK.frames[
+                config.frameId
+              ].createHash(password, hashSettings);
 
-            //   const hashSettings = await DocSpace.SDK.frames[
-            //     config.frameId
-            //   ].getHashSettings();
-            //   const passwordHash = await DocSpace.SDK.frames[
-            //     config.frameId
-            //   ].createHash(password, hashSettings);
-
-            //   try {
-            //     DocSpace.SDK.frames[config.frameId]
-            //       .login(email, passwordHash)
-            //       .then(() => DocSpace.SDK.initEditor(config));
-            //   } catch (e) {
-            //     console.error(e);
-            //   }
-            // }
+              try {
+                DocSpace.SDK.frames[config.frameId]
+                  .login(email, passwordHash)
+                  .then(() => DocSpace.SDK.initEditor(config));
+              } catch (e) {
+                console.error(e);
+              }
+            }
           },
         },
       };
