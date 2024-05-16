@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body style="width: 100%; height: 100vh;">
-  <div id="ds-frame">Fallback text</div>
-  <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=editor&width=100%25&height=100%25&frameId=ds-frame&init=true&id=6"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="width: 100%; height: 100vh">
+    <div id="ds-frame">Fallback text</div>
+    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=editor&width=100%25&height=100%25&frameId=ds-frame&init=true&id=6"></script>
 
+    <script>
+      let email = "fandilladp@gmail.com";
+      let password = "Pertamina@2024";
 
-  <script>
-    let email = "fandilladp@gmail.com"
-    let password = "Pertamina@2024"
-
-    const config = {
-      "mode": "editor",
-      "width": "100%",
-      "height": "100%",
-      "frameId": "ds-frame",
-      "init": true,
-      "id": 6,
-      "requestToken": null,
-    }
-
-    const systemConfig = {
-        events: {
-          "onAppReady": async () => {
-              const user = await DocSpace.SDK.frames[config.frameId].getUserInfo();
-
-              if (user?.email === email) {
-                DocSpace.SDK.initManager(config);
-              } else {
-                await DocSpace.SDK.frames[config.frameId].logout();
-
-                const hashSettings = await DocSpace.SDK.frames[config.frameId].getHashSettings();
-                const passwordHash = await DocSpace.SDK.frames[config.frameId].createHash(password, hashSettings);
-
-                try {
-                  DocSpace.SDK.frames[config.frameId].login(email, passwordHash).then(() => DocSpace.SDK.initEditor(config));
-                } catch (e) {
-                  console.error(e);
-                }
-              }
-          }
-        }
+      const config = {
+        mode: "editor",
+        width: "100%",
+        height: "100%",
+        frameId: "ds-frame",
+        init: true,
+        id: 6,
+        requestToken: null,
       };
 
-      DocSpace.SDK.initSystem({...config, ...systemConfig}); // INI BENAR
-    // const script = document.createElement("script");
+      const systemConfig = {
+        events: {
+          onAppReady: async () => {
+            const user = await DocSpace.SDK.frames[
+              config.frameId
+            ].getUserInfo();
 
-    // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
-    // script.onload = () => window.DocSpace.SDK.initFrame(config);
+            if (user?.email === email) {
+              DocSpace.SDK.initManager(config);
+            } else {
+              await DocSpace.SDK.frames[config.frameId].logout();
 
-    // document.body.appendChild(script);
-  </script>
-</body>
+              const hashSettings = await DocSpace.SDK.frames[
+                config.frameId
+              ].getHashSettings();
+              const passwordHash = await DocSpace.SDK.frames[
+                config.frameId
+              ].createHash(password, hashSettings);
+
+              try {
+                DocSpace.SDK.frames[config.frameId]
+                  .login(email, passwordHash)
+                  .then(() => DocSpace.SDK.initEditor(config));
+              } catch (e) {
+                console.error(e);
+              }
+            }
+          },
+        },
+      };
+
+      DocSpace.SDK.initSystem({ ...config, ...systemConfig }); // INI BENAR
+      // const script = document.createElement("script");
+
+      // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
+      // script.onload = () => window.DocSpace.SDK.initFrame(config);
+
+      // document.body.appendChild(script);
+    </script>
+  </body>
 </html>
