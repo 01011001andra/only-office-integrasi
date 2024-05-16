@@ -10,7 +10,7 @@
     <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"></script>
 
     <script>
-      let email = "fandilladp@gmail.com";
+      let email = "fandilladps@gmail.com";
       let password = "Pertamina@2024";
 
       const config = {
@@ -31,8 +31,10 @@
             ].getUserInfo();
             if (user?.email === email) {
               const data = DocSpace.SDK.initFrame(config);
-              console.log("masukkkkkkkkkkk", data);
+              console.log("masukkkkkkkkkkk berhasil login", data);
             } else {
+              console.log("masukkkkkkkkkkk gagal login");
+
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
                 config.frameId
