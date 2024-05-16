@@ -9,6 +9,27 @@
     <div id="ds-frame">Fallback text</div>
     <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=editor&width=100%25&height=100%25&frameId=ds-frame&init=true&id=6"></script>
 
+    <script>
+      const config = {
+        mode: "editor",
+        width: "100%",
+        height: "100%",
+        frameId: "ds-frame",
+        init: true,
+        id: 6,
+        requestToken: null,
+      };
+
+      const script = document.createElement("script");
+
+      script.setAttribute(
+        "src",
+        "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"
+      );
+      script.onload = () => window.DocSpace.SDK.initFrame(config);
+
+      document.body.appendChild(script);
+    </script>
     <!-- <script>
       let email = "fandilladp@gmail.com";
       let password = "Pertamina@2024";
