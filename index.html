@@ -7,98 +7,6 @@
   </head>
   <body style="width: 100%; height: 100vh">
     <div id="ds-frame">Fallback text</div>
-    <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js?mode=manager&width=100%25&height=100%25&frameId=ds-frame&showHeader=true&showTitle=true&showMenu=true&showFilter=true&disableActionButton=false&infoPanelVisible=true&init=true&filter=%5Bobject%20Object%5D"></script>
-
-    <script>
-      const config = {
-        mode: "manager",
-        width: "100%",
-        height: "100%",
-        frameId: "ds-frame",
-        showHeader: true,
-        showTitle: true,
-        showMenu: true,
-        showFilter: true,
-        disableActionButton: false,
-        infoPanelVisible: true,
-        init: true,
-        filter: {
-          count: 100,
-          page: 1,
-          sortorder: "descending",
-          sortby: "DateAndTime",
-          search: "",
-        },
-      };
-
-      const script = document.createElement("script");
-
-      script.setAttribute(
-        "src",
-        "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"
-      );
-      script.onload = () => window.DocSpace.SDK.initFrame(config);
-
-      document.body.appendChild(script);
-    </script>
-    <!-- <script>
-      let email = "fandilladp@gmail.com";
-      let password = "Pertamina@2024";
-
-      const config = {
-        mode: "editor",
-        width: "100%",
-        height: "100%",
-        frameId: "ds-frame",
-        init: true,
-        id: 6,
-        requestToken: null,
-      };
-
-      const systemConfig = {
-        events: {
-          onAppReady: async () => {
-            const user = await DocSpace.SDK.frames[
-              config.frameId
-            ].getUserInfo();
-
-            if (user?.email === email) {
-              DocSpace.SDK.initFrame(config);
-            } else {
-              await DocSpace.SDK.frames[config.frameId].logout();
-
-              const hashSettings = await DocSpace.SDK.frames[
-                config.frameId
-              ].getHashSettings();
-              const passwordHash = await DocSpace.SDK.frames[
-                config.frameId
-              ].createHash(password, hashSettings);
-
-              try {
-                DocSpace.SDK.frames[config.frameId]
-                  .login(email, passwordHash)
-                  .then(() => DocSpace.SDK.initEditor(config));
-              } catch (e) {
-                console.error(e);
-              }
-            }
-          },
-        },
-      };
-
-      DocSpace.SDK.initSystem({ ...config, ...systemConfig }); // INI BENAR
-    </script> -->
-  </body>
-</html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body style="width: 100%; height: 100vh">
-    <div id="ds-frame">Fallback text</div>
     <script src="https://office.mypge.id/static/scripts/sdk/1.0.0/api.js"></script>
 
     <script>
@@ -149,4 +57,4 @@
       DocSpace.SDK.initSystem({ ...config, ...systemConfig }); // INI BENAR
     </script>
   </body>
-</html> -->
+</html>
