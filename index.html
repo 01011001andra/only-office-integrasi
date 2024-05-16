@@ -29,18 +29,17 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
-            console.log(user);
             if (user?.email === email) {
               DocSpace.SDK.initFrame(config);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
-
               const hashSettings = await DocSpace.SDK.frames[
                 config.frameId
               ].getHashSettings();
               const passwordHash = await DocSpace.SDK.frames[
                 config.frameId
               ].createHash(password, hashSettings);
+              console.log("masukkkkkkkkkkk", passwordHash);
 
               try {
                 DocSpace.SDK.frames[config.frameId]
