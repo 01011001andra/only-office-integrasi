@@ -20,38 +20,40 @@
         requestToken: null,
       };
 
-      //   const systemConfig = {
-      //     events: {
-      //       onAppReady: async () => {
-      //         const user = await DocSpace.SDK.frames[
-      //           config.frameId
-      //         ].getUserInfo();
+      const systemConfig = {
+        events: {
+          onAppReady: async () => {
+            DocSpace.SDK.initManager(config);
 
-      //         if (user?.email === email) {
-      //           DocSpace.SDK.initManager(config);
-      //         } else {
-      //           await DocSpace.SDK.frames[config.frameId].logout();
+            // const user = await DocSpace.SDK.frames[
+            //   config.frameId
+            // ].getUserInfo();
 
-      //           const hashSettings = await DocSpace.SDK.frames[
-      //             config.frameId
-      //           ].getHashSettings();
-      //           const passwordHash = await DocSpace.SDK.frames[
-      //             config.frameId
-      //           ].createHash(password, hashSettings);
+            // if (user?.email === email) {
+            //   DocSpace.SDK.initManager(config);
+            // } else {
+            //   await DocSpace.SDK.frames[config.frameId].logout();
 
-      //           try {
-      //             DocSpace.SDK.frames[config.frameId]
-      //               .login(email, passwordHash)
-      //               .then(() => DocSpace.SDK.initEditor(config));
-      //           } catch (e) {
-      //             console.error(e);
-      //           }
-      //         }
-      //       },
-      //     },
-      //   };
+            //   const hashSettings = await DocSpace.SDK.frames[
+            //     config.frameId
+            //   ].getHashSettings();
+            //   const passwordHash = await DocSpace.SDK.frames[
+            //     config.frameId
+            //   ].createHash(password, hashSettings);
 
-      DocSpace.SDK.initSystem({ ...config }); // INI BENAR
+            //   try {
+            //     DocSpace.SDK.frames[config.frameId]
+            //       .login(email, passwordHash)
+            //       .then(() => DocSpace.SDK.initEditor(config));
+            //   } catch (e) {
+            //     console.error(e);
+            //   }
+            // }
+          },
+        },
+      };
+
+      DocSpace.SDK.initSystem({ ...config, ...systemConfig }); // INI BENAR
       // const script = document.createElement("script");
 
       // script.setAttribute("src", "https://office.mypge.id/static/scripts/sdk/1.0.0/api.js");
