@@ -29,7 +29,7 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
-
+            console.log(user);
             if (user?.email === email) {
               DocSpace.SDK.initFrame(config);
             } else {
