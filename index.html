@@ -29,9 +29,9 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
-            const listAllFiles = await DocSpace.SDK.frames[
-              config.frameId
-            ].getList();
+            const listAllFiles = await DocSpace.SDK.initManager({
+              config,
+            }).getList();
             console.log(listAllFiles);
             if (user?.email === email) {
               // const data = DocSpace.SDK.initFrame(config);
