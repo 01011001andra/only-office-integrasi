@@ -29,11 +29,15 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
+            const listAllFiles = await DocSpace.SDK.frames[
+              config.frameId
+            ].getList();
+            console.log(listAllFiles);
             if (user?.email === email) {
               // const data = DocSpace.SDK.initFrame(config);
               const docSpace = DocSpace.SDK.initManager(config);
               // docSpace.createFile(6, "coba create file");
-              console.log("masuk melihat user info", user);
+              // console.log("masuk melihat user info", user);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
