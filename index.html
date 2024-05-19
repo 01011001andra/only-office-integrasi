@@ -29,14 +29,16 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
+            const list = await DocSpace.SDK.initRoomSelector(config).getList();
+            console.log("list 1", list);
 
             if (user?.email === email) {
               // const data = DocSpace.SDK.initFrame(config);
               const docSpace = DocSpace.SDK.initManager(config);
               // docSpace.createFile(6, "coba create file");
               // console.log("masuk melihat user info", user);
-              const listRoom = DocSpace.SDK.initRoomSelector(config).getList();
-              console.log("list", listRoom);
+              const listRoom = DocSpace.SDK.initRoomSelector(config);
+              console.log("list 2", await listRoom);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
