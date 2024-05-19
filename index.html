@@ -19,7 +19,7 @@
         height: "100%",
         frameId: "ds-frame",
         init: true,
-        id: 6,
+        // id: 6,
         requestToken: null,
       };
 
@@ -31,9 +31,9 @@
             ].getUserInfo();
             if (user?.email === email) {
               const data = DocSpace.SDK.initFrame(config);
-              const listRoom = await docSpace.getList();
-              console.log("masuk");
-              console.log("masukkkkkkkkkkk", listRoom);
+              // const listRoom = await docSpace.getList();
+              console.log("masuk", data);
+              // console.log("masukkkkkkkkkkk", listRoom);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
