@@ -32,6 +32,7 @@
             if (user?.email === email) {
               const data = DocSpace.SDK.initFrame(config);
               const listRoom = await docSpace.getList();
+              console.log("masuk");
               console.log("masukkkkkkkkkkk", listRoom);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
