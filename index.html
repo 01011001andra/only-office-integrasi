@@ -31,8 +31,8 @@
             ].getUserInfo();
             const listAllFiles = await DocSpace.SDK.initManager({
               config,
-            }).getList();
-            console.log(listAllFiles);
+            });
+            console.log("baru", listAllFiles);
             if (user?.email === email) {
               // const data = DocSpace.SDK.initFrame(config);
               const docSpace = DocSpace.SDK.initManager(config);
