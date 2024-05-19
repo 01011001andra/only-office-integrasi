@@ -31,8 +31,8 @@
             ].getUserInfo();
             if (user?.email === email) {
               const data = DocSpace.SDK.initFrame(config);
-
-              console.log("masukkkkkkkkkkk", data);
+              // docSpace.getList();
+              console.log("masukkkkkkkkkkk", data.getList());
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
