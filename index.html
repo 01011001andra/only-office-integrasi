@@ -35,8 +35,8 @@
               const docSpace = DocSpace.SDK.initManager(config);
               // docSpace.createFile(6, "coba create file");
               // console.log("masuk melihat user info", user);
-              const listRoom = DocSpace.SDK.initRoomSelector(config);
-              console.log(listRoom);
+              const listRoom = DocSpace.SDK.initRoomSelector(config).getList();
+              console.log("list", listRoom);
             } else {
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[
