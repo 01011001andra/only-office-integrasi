@@ -29,13 +29,7 @@
             const user = await DocSpace.SDK.frames[
               config.frameId
             ].getUserInfo();
-            const list = await DocSpace.SDK.initRoomSelector(config).getRooms({
-              folder: 6,
-              searchArea: 3,
-              page: 1,
-              sortby: DateAndTime,
-              sortorder: descending,
-            });
+            const list = await DocSpace.SDK.initRoomSelector(config);
             console.log("list 1", list);
 
             if (user?.email === email) {
