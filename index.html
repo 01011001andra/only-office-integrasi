@@ -31,7 +31,7 @@
             ].getUserInfo();
             const listAllFiles = await DocSpace.SDK.initManager({
               config,
-            });
+            }).createFile("6", "coba");
             console.log("baru", listAllFiles);
             if (user?.email === email) {
               // const data = DocSpace.SDK.initFrame(config);
