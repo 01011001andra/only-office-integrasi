@@ -23,12 +23,16 @@
           init: true,
           id: 118,
           requestToken: null,
-          checkCSP: false
+          checkCSP: false,
         };
 
         const sc = {
           events: {
             onAppReady: async() => {
+                const user = await DocSpace.SDK.frames[
+                config.frameId
+              ].getUserInfo();
+              console.log(`User: ${user}`);  
               await DocSpace.SDK.frames[config.frameId].logout();
               const hashSettings = await DocSpace.SDK.frames[config.frameId].getHashSettings();
               const passwordHash = await DocSpace.SDK.frames[config.frameId].createHash(password, hashSettings);
